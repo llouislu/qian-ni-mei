@@ -25,6 +25,7 @@ Example:
 ##Known Issues
 1. Single login session limitaion on the server side, which fails to keep the session in your actual browser.
 2. No cron or run itself in a time-based loop. Furthur development has been intended.
+3. Unable to display unicode characters in shells such as git bash for windows.
 
 ##Changelog
 
