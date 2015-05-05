@@ -34,16 +34,25 @@ password=""
 # Adaptation larsenlouis
 function jsonq() {
 	# argument 1: json input;
-	# argument 2: query;
+	# argument 2: query (status or info);
 	[[ $# != 2 ]] && echo "bad argument(s)." && exit 2
-	# $1 is input of json
-	# $2 is query
     temp=`echo $json | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w $2`
-    echo $(echo ${temp##*|} |cut -d':' -f2)
+	echo $(echo ${temp##*|} |cut -d':' -f2)
+
     #original output
     #echo ${temp##*|}
 }
 
+function unicode() {
+	[[ $# != 1 ]] && echo "bad argument(s)." && exit 2
+	text=$(echo $1 |sed 's,u,\\u,g' | sed 's/ //g')
+	if [ "$text" == "" ]; then
+			return 0
+		else
+			echo -n "ZiMuZu.tv also says: "
+			echo -e $text
+	fi
+}
 # example:
 # json = '{"status":1,"info":"","data":false}'
 # jsonq $json "status"|"info"|"data"
@@ -77,6 +86,7 @@ echo $result
 if [ "$result" == "0" ]; then
 	echo "Failed to login. Please check your account confidential!" && let err=err+1 && err_handle $timestamp && exit $err
 fi
+unicode "$(jsonq $json "info")"
 echo "Please wait for 5 seconds as page-rediect simulation..."
 sleep 5s
 
@@ -95,6 +105,7 @@ echo $result
 if [ "$result" == "0" ]; then
 	echo "Failed to sign. Oh, God forbid you to do this!" && let err=err+1 && err_handle $timestamp && exit $err
 fi
+unicode "$(jsonq $json "info")"
 
 # clean up cookies
 echo "Cleaning up cookies..."
