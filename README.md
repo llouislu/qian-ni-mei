@@ -22,7 +22,13 @@ Example:
     user="larsenlouis"
     password="12345678"
 
-#Known Issues
-1. Unformatted outputs.
-2. Single login session limitaion on the server side, which fails to keep the session in your actual browser.
-3. No cron or run itself in a time-based loop. Furthur development has been intended.
+##Known Issues
+1. Single login session limitaion on the server side, which fails to keep the session in your actual browser.
+2. No cron or run itself in a time-based loop. Furthur development has been intended.
+
+##Changelog
+
+	2015-05-05 16:04
+	better output and introduced error simple handling
+	2015-05-05 10:43
+	First version
