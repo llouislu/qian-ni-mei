@@ -28,6 +28,8 @@ Example:
 
 ##Changelog
 
+	2015-05-05 18:04:23
+	display info from json
 	2015-05-05 16:04
 	better output and introduced error simple handling
 	2015-05-05 10:43
