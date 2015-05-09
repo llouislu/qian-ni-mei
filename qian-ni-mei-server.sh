@@ -15,7 +15,7 @@
 # Please store this script in somewhere you trust!
 
 # GUIDE:
-# /path/to/qian-ni-mei-server.sh "username" "password" "scheduledtime"
+# /path/to/qian-ni-mei-server.sh "username" "password" "scheduled_time"
 # time format: HHMM
 # HH double digits in 24-hour format, 00-23
 # MM double digits, 00-59
