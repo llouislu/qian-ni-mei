@@ -1,6 +1,6 @@
 #!/bin/bash
 # =========================================================
-# 签你妹
+# 签你妹 for desktop
 # Auto-check attendance for zimuzu.tv
 # by: larsenlouis
 # https://github.com/larsenlouis
@@ -15,17 +15,10 @@
 # Please store this script in somewhere you trust!
 
 # GUIDE:
-# Please fill your account confidential between quotation marks.
-# Example:
-# user="larsenlouis"
-# password="12345678"
+# /path/to/qian-ni-mei-desktop.sh "username" "password"
+# example:
+# ./qian-ni-mei-desktop.sh "larsenlouis" "12345678"
 
-# ----------------------------------------------
-# ----Your account confidential starts here-----
-user=""
-password=""
-# ----Your account confidential ends here-------
-# ----------------------------------------------
 
 # ---!!!!DO NOT MODIFY THE FOLLOWING LINES!!!!---
 
@@ -66,7 +59,18 @@ function err_handle() {
 	echo "Terminated with error(s)!"
 }
 
-#while true; do
+# argument check:
+# argument 1 is username
+# argument 2 is password
+[[ $# != 2 ]] && echo "bad arguments! qian-ni-mei-desktop.sh \"username\" \"password\"" && exit 1
+
+user=$1
+password=$2
+
+# echo session start time
+echo -e "\n======================================================"
+echo -n "签你妹 session starts at "
+echo $(date +'%Y-%m-%d %H:%M:%S UTC%z')
 
 timestamp=$(date +%s)
 err=0
@@ -113,9 +117,7 @@ rm -rf session-$timestamp.txt
 rm -rf usercookie-$timestamp.txt
 
 echo "Done!"
-
-# loop in 24 hrs
-
-#sleep 24h
-
-#done
+# echo session start time
+echo -n "签你妹 session ends at "
+echo $(date +'%Y-%m-%d %H:%M:%S UTC%z')
+echo -e "======================================================\n"
