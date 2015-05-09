@@ -20,6 +20,8 @@ Please run this script on the computer that you trust!
 
 Example:
 
+	chmod +x ./qian-ni-mei-desktop.sh # obtain execute permission
+
 	./qian-ni-mei-desktop.sh "larsenlouis" "12345678"
 
 ###Guide for Server Users
@@ -33,11 +35,19 @@ Time format: HHMM
 
 Examples:
 
-	./qian-ni-mei-server.sh "larsenlouis" "12345678" "0100"
-This means qian-ni-mei will auto-sign at localtime 01:00 everyday.
+	# First
+	chmod +x ./qian-ni-mei-desktop.sh # server version needs desktop version
 
+	# Then
+	chmod +x ./qian-ni-mei-server.sh # obtain execute permission
+
+	# Either
+	./qian-ni-mei-server.sh "larsenlouis" "12345678" "0100"
+	This means qian-ni-mei will auto-sign at localtime 01:00 everyday.
+
+	# Or
 	./qian-ni-mei-server.sh "larsenlouis" "12345678" "2250"
-This means qian-ni-mei will auto-sign at localtime 22:50 everyday.
+	This means qian-ni-mei will auto-sign at localtime 22:50 everyday.
 
 Tips for server users:
 
