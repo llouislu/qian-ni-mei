@@ -84,7 +84,7 @@ sleep 1s
 # post login info with the session and get user cookie
 echo "Sending your account confidential..."
 echo "Server response to your login info: 0=failed, 1=succeeded"
-json=$(curl -s "http://www.zimuzu.tv/user/login/ajaxlogin" -b session-$timestamp.txt --data "account=$user&password=$password&remember=0&back_url=" -c usercookie-$timestamp.txt)
+json=$(curl -s "http://www.zimuzu.tv/user/login/ajaxlogin" -b session-$timestamp.txt --data "account=$user&password=$password&remember=0&url_back=" -c usercookie-$timestamp.txt)
 result=$(jsonq $json "status")
 echo $result
 if [ "$result" == "0" ]; then
