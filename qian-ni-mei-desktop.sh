@@ -106,10 +106,11 @@ echo "Server response to your sign: 0=failed, 1=successed"
 json=$(curl -s "http://www.zimuzu.tv/user/sign/dosign" -b usercookie-$timestamp.txt)
 result=$(jsonq $json "status")
 echo $result
-if [ "$result" == "0" ]; then
+if [ "$result" != "1" ]; then
+	unicode "$(jsonq $json "info")"
 	echo "Failed to sign. Oh, God forbid you to do this!" && let err=err+1 && err_handle $timestamp && exit $err
 fi
-unicode "$(jsonq $json "info")"
+
 
 # clean up cookies
 echo "Cleaning up cookies..."
