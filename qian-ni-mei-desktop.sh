@@ -103,7 +103,7 @@ sleep 20s
 # sign with the user cookie
 echo "Sending your sign request..."
 echo "Server response to your sign: 0=failed, 1=successed"
-json=$(curl -s "http://www.zimuzu.tv/user/sign/dosign" -b usercookie-$timestamp.txt)
+json=$(curl -s "http://www.zimuzu.tv/user/sign/dosign" -b usercookie-$timestamp.txt  -H "Cookie: mykeywords=a"%"3A0"%"3A"%"7B"%"7D;" --compressed)
 result=$(jsonq $json "status")
 echo $result
 if [ "$result" != "1" ]; then
