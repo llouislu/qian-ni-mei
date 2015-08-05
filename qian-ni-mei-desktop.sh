@@ -97,13 +97,22 @@ sleep 5s
 # goto user sign page
 echo "Requesting user home page..."
 curl -s "http://www.zimuzu.tv/user/sign" -b usercookie-$timestamp.txt > /dev/null
-echo "Please wait for 20 seconds as js-button-timer simulation..."
-sleep 20s
+
+# get public hotkeyword
+echo "Requesting user hotkeyword..."
+curl -s "http://www.zimuzu.tv/public/hotkeyword" -b usercookie-$timestamp.txt --compressed > /dev/null
+
+# get current user top header info
+echo "Requesting getCurUserTopInfo..."
+curl -s "http://www.zimuzu.tv/user/login/getCurUserTopInfo" -b usercookie-$timestamp.txt --compressed > /dev/null
+
+echo "Please wait for 16 seconds as js-button-timer simulation..."
+sleep 16s
 
 # sign with the user cookie
 echo "Sending your sign request..."
 echo "Server response to your sign: 0=failed, 1=successed"
-json=$(curl -s "http://www.zimuzu.tv/user/sign/dosign" -b usercookie-$timestamp.txt  -H "Cookie: mykeywords=a"%"3A0"%"3A"%"7B"%"7D;" --compressed)
+json=$(curl -s "http://www.zimuzu.tv/user/sign/dosign" -b usercookie-$timestamp.txt --compressed)
 result=$(jsonq $json "status")
 echo $result
 if [ "$result" != "1" ]; then
