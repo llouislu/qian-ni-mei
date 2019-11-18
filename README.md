@@ -1,7 +1,7 @@
 # 签你妹
 Auto-check attendance for http://www.zimuzu.tv
 
-by: larsenlouis
+by: llouislu
 
 https://github.com/larsenlouis
 
